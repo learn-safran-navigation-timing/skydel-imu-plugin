@@ -15,6 +15,7 @@ else()
 endif()
 
 # Dependencies
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
 find_package(blaze 3.7 REQUIRED)
 find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
 
