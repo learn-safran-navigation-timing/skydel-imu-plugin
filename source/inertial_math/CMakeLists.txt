@@ -4,7 +4,7 @@ add_library(inertial_math STATIC ${INERTIAL_MATH_SRC})
 
 target_include_directories(inertial_math PUBLIC include)
 
-target_link_libraries(inertial_math PUBLIC blaze::blaze)
+target_link_libraries(inertial_math PUBLIC blaze)
 
 set_property(TARGET inertial_math PROPERTY CXX_STANDARD 17)
 
