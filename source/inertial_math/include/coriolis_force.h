@@ -1,5 +1,4 @@
-#ifndef IML_CORIOLIS_FORCE_H
-#define IML_CORIOLIS_FORCE_H
+#pragma once
 
 #include "rotation_matrix.h"
 #include "triplet.h"
@@ -75,5 +74,3 @@ double earthMeridianRadiusOfCurvature(double latitude);
 double earthMeanRadiusOfCurvature(double latitude);
 
 } // namespace Iml
-
-#endif // IML_CORIOLIS_FORCE_H

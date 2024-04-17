@@ -1,5 +1,4 @@
-#ifndef IMU_LOGGER_H
-#define IMU_LOGGER_H
+#pragma once
 
 #include <QFile>
 #include <QString>
@@ -66,5 +65,3 @@ private:
   uint16_t m_port;
   QUdpSocket m_socket;
 };
-
-#endif // IMU_LOGGER_H

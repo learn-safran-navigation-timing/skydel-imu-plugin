@@ -91,7 +91,7 @@ const QString ImuFileLogger::jsonFileExtension = ".json";
 
 ImuFileLogger::ImuFileLogger(ImuDataFormat dataFormat, QString logFilePath) :
   ImuLogger(dataFormat),
-  m_file(std::move(logFilePath + getFileExtension()))
+  m_file(logFilePath + getFileExtension())
 {
   if (!m_file.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
     throw std::runtime_error("ImuFileLogger - Can't open file.");

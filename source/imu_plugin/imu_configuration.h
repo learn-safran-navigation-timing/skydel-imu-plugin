@@ -1,5 +1,4 @@
-#ifndef IMU_CONFIGURATION_H
-#define IMU_CONFIGURATION_H
+#pragma once
 
 #include <QJsonObject>
 
@@ -16,8 +15,8 @@ public:
   QJsonValue getValue(const QString& key) const;
   void setValue(SkydelNotifierInterface* notifier, const QString& key, const QJsonValue& value);
 
+  bool isEnabled() const;
+
 private:
   QJsonObject m_configuration;
 };
-
-#endif // IMU_CONFIGURATION_H

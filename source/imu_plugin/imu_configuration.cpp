@@ -9,7 +9,7 @@
 
 ImuConfiguration::ImuConfiguration()
 {
-  m_configuration.insert("fileLoggingEnabled", true);
+  m_configuration.insert("fileLoggingEnabled", false);
   m_configuration.insert("fileLoggingFormat", ImuDataFormat::CSV);
 
   m_configuration.insert("networkLoggingEnabled", false);
@@ -26,9 +26,6 @@ void ImuConfiguration::setConfiguration(SkydelNotifierInterface* notifier, const
   {
     if (!configuration.contains(key))
     {
-      notifier->notify("During configuration transfer from Skydel to plug-in, the key " + key.toStdString() +
-                         " is expected by missing",
-                       SkydelNotifierInterface::Type::WARNING);
       continue;
     }
 
@@ -62,4 +59,9 @@ void ImuConfiguration::setValue(SkydelNotifierInterface* notifier, const QString
 
   m_configuration.insert(key, value);
   notifier->setDirty();
+}
+
+bool ImuConfiguration::isEnabled() const
+{
+  return (getValue("fileLoggingEnabled").toBool() || getValue("networkLoggingEnabled").toBool());
 }

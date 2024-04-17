@@ -1,5 +1,4 @@
-#ifndef IML_UTILITY_H
-#define IML_UTILITY_H
+#pragma once
 
 #include <cmath>
 
@@ -75,5 +74,3 @@ T sin2(const T& angle)
 }
 
 } // namespace Iml
-
-#endif // IML_UTILITY_H

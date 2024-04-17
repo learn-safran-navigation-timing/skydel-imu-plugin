@@ -1,5 +1,4 @@
-#ifndef IML_GRAVITY_H
-#define IML_GRAVITY_H
+#pragma once
 
 #include <stdexcept>
 
@@ -57,5 +56,3 @@ double gravityGRS67(double latitude, double altitude);
 Triplet nedAccelerationFromGravity(const Triplet& llaPosition, GravityModel gravityModel);
 
 } // namespace Iml
-
-#endif // IML_GRAVITY_H
