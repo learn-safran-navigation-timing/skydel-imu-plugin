@@ -1,5 +1,4 @@
-#ifndef IML_TRANSFORMATION_H
-#define IML_TRANSFORMATION_H
+#pragma once
 
 #include "dynamic.h"
 #include "triplet.h"
@@ -42,5 +41,3 @@ Triplet nedToBodyFromXYZRotation(const Triplet& attitude, const Triplet& ned);
 Triplet nedToBody(const Triplet& attitude, const Triplet& ned);
 
 } // namespace Iml
-
-#endif // IML_TRANSFORMATION_H

@@ -1,5 +1,4 @@
-#ifndef IML_CONSTANT_H
-#define IML_CONSTANT_H
+#pragma once
 
 #include <cmath>
 
@@ -26,5 +25,3 @@ inline constexpr double WRS67_COEFFICIENT_A = 5.3024e-03;
 inline constexpr double WRS67_COEFFICIENT_B = -5.9e-06;
 
 } // namespace Iml
-
-#endif // IMU_CONSTANT_H

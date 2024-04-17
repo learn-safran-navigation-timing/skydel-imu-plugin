@@ -1,5 +1,4 @@
-#ifndef IML_TRIPLET_H
-#define IML_TRIPLET_H
+#pragma once
 
 #include <blaze/Math.h>
 
@@ -60,5 +59,3 @@ inline double altitude(const Triplet& triplet)
 }
 
 } // namespace Iml
-
-#endif // IML_TRIPLET_H

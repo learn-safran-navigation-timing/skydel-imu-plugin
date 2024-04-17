@@ -1,5 +1,4 @@
-#ifndef IML_ROTATION_MATRIX_H
-#define IML_ROTATION_MATRIX_H
+#pragma once
 
 #include <blaze/Math.h>
 
@@ -45,5 +44,3 @@ RotationMatrix rotationMatrixForXYZRotation(const Triplet& angles);
 Triplet rotate(const RotationMatrix& rotationMatrix, const Triplet& triplet);
 
 } // namespace Iml
-
-#endif // IML_ROTATION_MATRIX_H

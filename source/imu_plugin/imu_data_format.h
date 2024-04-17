@@ -1,5 +1,4 @@
-#ifndef IMU_DATA_FORMAT_H
-#define IMU_DATA_FORMAT_H
+#pragma once
 
 #include <stdexcept>
 
@@ -22,5 +21,3 @@ inline const char* toString(ImuDataFormat format)
   }
   throw std::runtime_error {"Unknown ImuDataFormat"};
 }
-
-#endif // IMU_DATA_FORMAT_H

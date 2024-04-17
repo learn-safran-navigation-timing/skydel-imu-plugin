@@ -1,5 +1,4 @@
-#ifndef IML_ANGLE_UNWRAP_H
-#define IML_ANGLE_UNWRAP_H
+#pragma once
 
 #include "triplet.h"
 
@@ -40,5 +39,3 @@ Triplet unwrap(const Triplet& previousAngles, const Triplet& currentAngles, Trip
 double roundDifferenceToClosest2PiMultiple(double previousAngle, double currentAngle);
 
 } // namespace Iml
-
-#endif // IML_ANGLE_UNWRAP_H

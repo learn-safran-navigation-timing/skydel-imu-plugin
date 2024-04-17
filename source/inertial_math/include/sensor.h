@@ -1,5 +1,4 @@
-#ifndef IML_SENSOR_H
-#define IML_SENSOR_H
+#pragma once
 
 #include "gravity.h"
 #include "triplet.h"
@@ -37,5 +36,3 @@ Triplet idealGyroscope(const Triplet& llaPosition,
                        const Triplet& nedAngularVelocity);
 
 } // namespace Iml
-
-#endif // IML_SENSOR_H

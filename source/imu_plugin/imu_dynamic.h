@@ -1,5 +1,4 @@
-#ifndef IMU_DYNAMIC_H
-#define IMU_DYNAMIC_H
+#pragma once
 
 #include <QString>
 
@@ -21,5 +20,3 @@ private:
   Iml::BodyInertialDynamic m_bodyDynamic;
   std::vector<ImuLoggerPtr> m_loggers;
 };
-
-#endif // IMU_DYNAMIC_H

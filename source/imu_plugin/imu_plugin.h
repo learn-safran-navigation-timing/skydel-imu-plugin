@@ -1,5 +1,4 @@
-#ifndef IMU_PLUGIN_H
-#define IMU_PLUGIN_H
+#pragma once
 
 #include "imu_configuration.h"
 #include "imu_dynamic.h"
@@ -16,13 +15,13 @@ public:
   inline void setNotifier(SkydelNotifierInterface* notifier) override { m_skydelNotifier = notifier; }
   void setConfiguration(const QString&, const QJsonObject& configuration) override;
   inline QJsonObject getConfiguration() const override { return m_configuration.getConfiguration(); }
-  QWidget* createUI() override;
+  SkydelWidgets createUI() override;
   inline void initialize() override {}
 
   // SkydelPositionObserverInterface
   SkydelRuntimePositionObserver* createRuntimePositionObserver() override
   {
-    return new ImuDynamic(m_configuration, m_logPath);
+    return m_configuration.isEnabled() ? new ImuDynamic(m_configuration, m_logPath) : nullptr;
   }
 
 signals:
@@ -34,12 +33,4 @@ private:
   ImuConfiguration m_configuration;
 };
 
-// Required boilerplate
-class ImuPluginFactory : public QObject, public SkydelPlugin<ImuPlugin>
-{
-  Q_OBJECT
-  Q_PLUGIN_METADATA(IID "ImuPlugin" FILE "imu_plugin.json")
-  Q_INTERFACES(SkydelPluginBase)
-};
-
-#endif // IMU_PLUGIN_H
+REGISTER_SKYDEL_PLUGIN(ImuPlugin)

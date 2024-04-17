@@ -1,5 +1,4 @@
-#ifndef IML_DYNAMIC_H
-#define IML_DYNAMIC_H
+#pragma once
 
 #include <cstdint>
 #include <vector>
@@ -18,25 +17,29 @@ struct RawPositionData
 
 struct InertialData
 {
-  int64_t time;            // millisecond
-  Triplet position;        // meter
-  Triplet velocity;        // meter/second
-  Triplet acceleration;    // meter/second^2
-  Triplet attitude;        // radian
-  Triplet angularVelocity; // radian/second
+  int64_t time;                // millisecond
+  Triplet position;            // meter
+  Triplet velocity;            // meter/second
+  Triplet acceleration;        // meter/second^2
+  Triplet jerk;                // meter/second^3
+  Triplet attitude;            // radian
+  Triplet angularVelocity;     // radian/second
+  Triplet angularAcceleration; // radian/second^2
+  Triplet angularJerk;         // radian/second^3
 };
 
 class BodyDynamic
 {
 public:
+  virtual ~BodyDynamic() = default;
   virtual inline InertialData getPosition() const { return m_datas[1]; }
-  inline bool isReady() const { return m_datas.size() == m_bufferCapacity; }
+  bool isAccelerationReady() const;
+  bool isJerkReady() const;
   void pushPosition(const RawPositionData& rawPosition);
 
 private:
   Triplet m_phaseCorrection;
   std::vector<InertialData> m_datas;
-  static constexpr size_t m_bufferCapacity = 4;
 };
 
 class BodyInertialDynamic : public BodyDynamic
@@ -50,5 +53,3 @@ private:
 };
 
 } // namespace Iml
-
-#endif // IML_DYNAMIC_H

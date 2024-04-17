@@ -1,5 +1,4 @@
-#ifndef IMU_VIEW_H
-#define IMU_VIEW_H
+#pragma once
 
 #include <QWidget>
 
@@ -32,5 +31,3 @@ signals:
 private:
   Ui::ImuView* m_ui;
 };
-
-#endif // IMU_VIEW_H

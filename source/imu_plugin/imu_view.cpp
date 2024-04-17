@@ -56,11 +56,32 @@ ImuView::~ImuView()
 
 void ImuView::setConfiguration(const ImuConfiguration& configuration)
 {
-  m_ui->checkBoxFileLogging->setChecked(configuration.getValue("fileLoggingEnabled").toBool());
-  m_ui->comboBoxFileLogging->setCurrentIndex(configuration.getValue("fileLoggingFormat").toInt());
-  m_ui->checkBoxNetworkLogging->setChecked(configuration.getValue("networkLoggingEnabled").toBool());
-  m_ui->comboBoxNetworkLogging->setCurrentIndex(configuration.getValue("networkLoggingFormat").toInt());
-  m_ui->lineEditNetworkLogging->setText(configuration.getValue("networkLoggingAddress").toString());
-  m_ui->spinBoxNetworkLogging->setValue(configuration.getValue("networkLoggingPort").toInt());
-  m_ui->comboBoxGravityModel->setCurrentIndex(configuration.getValue("gravityModel").toInt());
+  {
+    QSignalBlocker blocker {m_ui->checkBoxFileLogging};
+    m_ui->checkBoxFileLogging->setChecked(configuration.getValue("fileLoggingEnabled").toBool());
+  }
+  {
+    QSignalBlocker blocker {m_ui->comboBoxFileLogging};
+    m_ui->comboBoxFileLogging->setCurrentIndex(configuration.getValue("fileLoggingFormat").toInt());
+  }
+  {
+    QSignalBlocker blocker {m_ui->checkBoxNetworkLogging};
+    m_ui->checkBoxNetworkLogging->setChecked(configuration.getValue("networkLoggingEnabled").toBool());
+  }
+  {
+    QSignalBlocker blocker {m_ui->comboBoxNetworkLogging};
+    m_ui->comboBoxNetworkLogging->setCurrentIndex(configuration.getValue("networkLoggingFormat").toInt());
+  }
+  {
+    QSignalBlocker blocker {m_ui->lineEditNetworkLogging};
+    m_ui->lineEditNetworkLogging->setText(configuration.getValue("networkLoggingAddress").toString());
+  }
+  {
+    QSignalBlocker blocker {m_ui->spinBoxNetworkLogging};
+    m_ui->spinBoxNetworkLogging->setValue(configuration.getValue("networkLoggingPort").toInt());
+  }
+  {
+    QSignalBlocker blocker {m_ui->comboBoxGravityModel};
+    m_ui->comboBoxGravityModel->setCurrentIndex(configuration.getValue("gravityModel").toInt());
+  }
 }

@@ -13,10 +13,11 @@ ImuDynamic::ImuDynamic(const ImuConfiguration& configuration, const QString& log
                                       logPath + QDir::separator() + "imu_dynamic"));
 
   if (configuration.getValue("networkLoggingEnabled").toBool())
-    m_loggers.push_back(std::make_shared<ImuNetworkLogger>(static_cast<ImuDataFormat>(
-                                                             configuration.getValue("networkLoggingFormat").toInt()),
-                                                           configuration.getValue("networkLoggingAddress").toString(),
-                                                           configuration.getValue("networkLoggingPort").toInt()));
+    m_loggers.push_back(
+      std::make_shared<ImuNetworkLogger>(static_cast<ImuDataFormat>(
+                                           configuration.getValue("networkLoggingFormat").toInt()),
+                                         configuration.getValue("networkLoggingAddress").toString(),
+                                         static_cast<uint16_t>(configuration.getValue("networkLoggingPort").toInt())));
 }
 
 void ImuDynamic::pushPosition(const TimedPosition& p)
@@ -24,10 +25,10 @@ void ImuDynamic::pushPosition(const TimedPosition& p)
   m_bodyDynamic.pushPosition(
     {p.time, {p.position.x, p.position.y, p.position.z}, {p.orientation.roll, p.orientation.pitch, p.orientation.yaw}});
 
-  if (m_bodyDynamic.isReady())
+  if (m_bodyDynamic.isJerkReady())
   {
     auto data = m_bodyDynamic.getPosition();
-    if (m_bodyDynamic.isReady())
+    if (m_bodyDynamic.isAccelerationReady())
       std::for_each(m_loggers.begin(), m_loggers.end(), [&data](ImuLoggerPtr logger) { logger->log(data); });
   }
 }

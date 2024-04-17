@@ -4,11 +4,12 @@
 
 void ImuPlugin::setConfiguration(const QString&, const QJsonObject& configuration)
 {
+  m_configuration = ImuConfiguration();
   m_configuration.setConfiguration(m_skydelNotifier, configuration);
   emit configurationChanged();
 }
 
-QWidget* ImuPlugin::createUI()
+SkydelWidgets ImuPlugin::createUI()
 {
   auto view = new ImuView(m_configuration);
 
@@ -42,5 +43,5 @@ QWidget* ImuPlugin::createUI()
 
   connect(this, &ImuPlugin::configurationChanged, [this, view]() { view->setConfiguration(m_configuration); });
 
-  return view;
+  return {view};
 }
