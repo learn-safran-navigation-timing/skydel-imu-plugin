@@ -1,3 +1,2 @@
-target_include_directories(imu_plugin PUBLIC
 add_subdirectory(common)
 add_subdirectory(basic)
