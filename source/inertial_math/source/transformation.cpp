@@ -1,8 +1,6 @@
 #include "transformation.h"
 
 #include "constant.h"
-#include "coriolis_force.h"
-#include "gravity.h"
 #include "rotation_matrix.h"
 #include "utility.h"
 
@@ -35,9 +33,21 @@ Triplet ecefToNed(const Triplet& llaOrigin, const Triplet& ecef)
   return rotate(rotationMatrixForXYZRotation({0.0, toRadian(-90.0) - latitude(llaOrigin), longitude(llaOrigin)}), ecef);
 }
 
+Triplet nedToEcef(const Triplet& llaOrigin, const Triplet& ned)
+{
+  return rotate(blaze::trans(
+                  rotationMatrixForXYZRotation({0.0, toRadian(-90.0) - latitude(llaOrigin), longitude(llaOrigin)})),
+                ned);
+}
+
 Triplet nedToBodyFromXYZRotation(const Triplet& attitude, const Triplet& ned)
 {
   return rotate(rotationMatrixForXYZRotation(attitude), ned);
+}
+
+Triplet bodyToNedFromZYXRotation(const Triplet& attitude, const Triplet& body)
+{
+  return rotate(trans(rotationMatrixForXYZRotation(attitude)), body);
 }
 
 Triplet nedToBody(const Triplet& attitude, const Triplet& ned)

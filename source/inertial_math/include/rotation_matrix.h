@@ -4,11 +4,12 @@
 
 #include <cmath>
 
+#include "matrix.h"
 #include "triplet.h"
 
 namespace Iml
 {
-using RotationMatrix = blaze::StaticMatrix<double, 3, 3>;
+using RotationMatrix = Matrix3x3;
 
 enum class Axis
 {

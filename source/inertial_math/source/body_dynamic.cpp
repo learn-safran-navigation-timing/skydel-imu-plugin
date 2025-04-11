@@ -1,8 +1,6 @@
-#include "dynamic.h"
+#include "body_dynamic.h"
 
 #include "angle_unwrap.h"
-#include "sensor.h"
-#include "transformation.h"
 
 namespace
 {
@@ -22,15 +20,15 @@ bool BodyDynamic::isJerkReady() const
   return m_datas.size() >= MIN_BUFFER_SIZE_FOR_JERK;
 }
 
-void BodyDynamic::pushPosition(const RawPositionData& rawPosition)
+void BodyDynamic::pushPosition(int64_t time, const Triplet& position, const Triplet& attitude)
 {
   InertialData data = {
-    static_cast<int64_t>(rawPosition.time),
-    rawPosition.position,
+    time,
+    position,
     {0.0, 0.0, 0.0},
     {0.0, 0.0, 0.0},
     {0.0, 0.0, 0.0},
-    {rawPosition.orientation},
+    attitude,
     {0.0, 0.0, 0.0},
     {0.0, 0.0, 0.0},
     {0.0, 0.0, 0.0},
@@ -76,29 +74,6 @@ void BodyDynamic::pushPosition(const RawPositionData& rawPosition)
       m_datas[1].jerk = (m_datas[2].acceleration - m_datas[0].acceleration) / dt_2_0;
     }
   }
-}
-
-BodyInertialDynamic::BodyInertialDynamic(GravityModel gravityModel) : m_gravityModel(gravityModel)
-{
-}
-
-InertialData BodyInertialDynamic::getPosition() const
-{
-  InertialData position;
-
-  if (isAccelerationReady())
-  {
-    position = BodyDynamic::getPosition();
-    auto llaPosition = ecefToLla(position.position);
-    position.acceleration =
-      idealAccelerometer(llaPosition, position.velocity, position.acceleration, position.attitude, m_gravityModel);
-    position.angularVelocity = idealGyroscope(llaPosition,
-                                              position.velocity,
-                                              position.attitude,
-                                              position.angularVelocity);
-  }
-
-  return position;
 }
 
 } // namespace Iml

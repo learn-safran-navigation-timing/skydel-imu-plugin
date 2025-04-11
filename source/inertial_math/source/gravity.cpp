@@ -10,7 +10,7 @@ double gravityWGS84(double latitude, double altitude)
 {
   double geocentricLatitude = std::atan(std::pow(SEMI_MINOR_AXIS, 2.0) / std::pow(SEMI_MAJOR_AXIS, 2.0) *
                                         std::tan(latitude));
-  double radius = SEMI_MAJOR_AXIS * (1.0 - FLATTENING * sin2(geocentricLatitude)) - altitude;
+  double radius = SEMI_MAJOR_AXIS * (1.0 - FLATTENING * sin2(geocentricLatitude)) + altitude;
 
   return -(-GEOCENTRIC_GRAVITATIONAL_CONSTANT / std::pow(radius, 2.0) *
              (1.0 - 3.0 * DERIVED_DYNAMIC_FORM_FACTOR * std::pow(SEMI_MAJOR_AXIS, 2.0) / (2.0 * std::pow(radius, 2.0)) *
