@@ -5,10 +5,11 @@
 enum ImuDataFormat
 {
   CSV,
-  JSON
+  JSON,
+  STIM_IMU
 };
 
-const ImuDataFormat ALL_IMU_DATA_FORMAT[] = {ImuDataFormat::CSV, ImuDataFormat::JSON};
+const ImuDataFormat ALL_IMU_DATA_FORMAT[] = {ImuDataFormat::CSV, ImuDataFormat::JSON, ImuDataFormat::STIM_IMU};
 
 inline const char* toString(ImuDataFormat format)
 {
@@ -18,6 +19,8 @@ inline const char* toString(ImuDataFormat format)
       return "CSV";
     case ImuDataFormat::JSON:
       return "JSON";
+    case ImuDataFormat::STIM_IMU:
+      return "STIM IMU";
   }
   throw std::runtime_error {"Unknown ImuDataFormat"};
 }

@@ -6,18 +6,22 @@
 
 namespace Ui
 {
-class ImuView;
+class ImuBasicView;
 }
 
-class ImuView : public QWidget
+class ImuBasicView final : public QWidget
 {
   Q_OBJECT
 
 public:
-  explicit ImuView(const ImuConfiguration& configuration, QWidget* parent = nullptr);
-  ~ImuView();
+  ImuBasicView(const ImuConfiguration& configuration, QWidget* parent = nullptr);
+  ~ImuBasicView();
 
-  void setConfiguration(const ImuConfiguration& configuration);
+  void onConfigurationUpdate(const ImuConfiguration& configuration);
+
+public slots:
+  void simulationStarted();
+  void simulationStopped();
 
 signals:
   void checkBoxFileLoggingClicked(bool checked);
@@ -29,5 +33,5 @@ signals:
   void comboBoxGravityModelActivated(int index);
 
 private:
-  Ui::ImuView* m_ui;
+  Ui::ImuBasicView* m_ui;
 };

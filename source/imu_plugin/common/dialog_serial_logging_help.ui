@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DialogSerialLoggingHelp</class>
+ <widget class="QDialog" name="DialogSerialLoggingHelp">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>844</width>
+    <height>592</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>STIM IMU Data Encoding</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item row="12" column="0">
+      <widget class="QLabel" name="label_17">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;
+border-bottom: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>CRC32</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0">
+      <widget class="QLabel" name="label_16">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Latency</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_11">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Accelerometer X Axis Data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="label_15">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Counter</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Datagram Identifier</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Gyroscope X Axis Data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Status Mode of Gyroscope</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_13">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Accelerometer Z Axis Data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Byte Number</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_14">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Status Mode of Accelerometer</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_12">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Accelerometer Y Axis Data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Gyroscope Z Axis Data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLabel" name="label_5">
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;
+border-right: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>LSB</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Gyroscope Y Axis Data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_6">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLabel" name="label_18">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>0x91 (Gyroscope and Accelerometer)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLabel" name="label_19">
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Data</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="label_20">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>1-3</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QLabel" name="label_21">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>24 bits of Encoded Data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="label_22">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>4-6</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QLabel" name="label_23">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>24 bits of Encoded Data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLabel" name="label_24">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;
+border-right: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QLabel" name="label_25">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;border-right: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>0.22°/h</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLabel" name="label_26">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>7-9</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLabel" name="label_27">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>10</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLabel" name="label_28">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>11-13</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLabel" name="label_29">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>14-16</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QLabel" name="label_30">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>17-19</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QLabel" name="label_31">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>20</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QLabel" name="label_32">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>21</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="1">
+      <widget class="QLabel" name="label_33">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>22-23</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="1">
+      <widget class="QLabel" name="label_34">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;
+border-bottom: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>24-27</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="2">
+      <widget class="QLabel" name="label_35">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;
+border-bottom: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="2">
+      <widget class="QLabel" name="label_38">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>0x00</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="2">
+      <widget class="QLabel" name="label_39">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="2">
+      <widget class="QLabel" name="label_40">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>0x00 (Normal)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="2">
+      <widget class="QLabel" name="label_41">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>24 bits of Encoded Data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="2">
+      <widget class="QLabel" name="label_42">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>24 bits of Encoded Data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="2">
+      <widget class="QLabel" name="label_43">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>24 bits of Encoded Data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="QLabel" name="label_44">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>0x00 (Normal)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="QLabel" name="label_45">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>24 bits of Encoded Data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QLabel" name="label_46">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;border-right: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>0.22°/h</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="QLabel" name="label_47">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;border-right: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>0.22°/h</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="QLabel" name="label_49">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;border-right: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>1.9µg</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="3">
+      <widget class="QLabel" name="label_50">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;border-right: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>1.9µg</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="3">
+      <widget class="QLabel" name="label_51">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;border-right: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>1.9µg</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="3">
+      <widget class="QLabel" name="label_52">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;border-right: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="QLabel" name="label_36">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;border-right: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="3">
+      <widget class="QLabel" name="label_37">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;border-right: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="3">
+      <widget class="QLabel" name="label_48">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;
+border-right: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="3">
+      <widget class="QLabel" name="label_53">
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;
+border-bottom: 1px solid black;
+border-right: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-top: 1px solid black;
+border-left: 1px solid black;</string>
+       </property>
+       <property name="text">
+        <string>Parameters</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>The CRC32 is computed using the polynomial 0x04C11DB7 and initialized with the seed value 0xFFFFFFFF.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::StandardButton::Close</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>DialogSerialLoggingHelp</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>DialogSerialLoggingHelp</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
