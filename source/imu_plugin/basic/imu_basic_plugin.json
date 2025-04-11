@@ -1,0 +1,5 @@
+{
+    "Name": "Basic IMU",
+    "Description": "Computes IMU data from Skydel positions.",
+    "Version": "25.4.0"
+}
