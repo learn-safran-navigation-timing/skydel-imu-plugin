@@ -8,8 +8,6 @@
 namespace
 {
 
-constexpr auto TERMINATION_DELIMITER = "\r\n"; // <CR><LF>
-
 const QString getFormattedDataInCsvFormat(const Iml::ImuData& data)
 {
   QString formattedData;
@@ -17,7 +15,7 @@ const QString getFormattedDataInCsvFormat(const Iml::ImuData& data)
   stream.setRealNumberPrecision(15);
   stream << data.time << ',' << Iml::x(data.acceleration) << ',' << Iml::y(data.acceleration) << ','
          << Iml::z(data.acceleration) << ',' << Iml::roll(data.angularVelocity) << ','
-         << Iml::pitch(data.angularVelocity) << ',' << Iml::yaw(data.angularVelocity) << TERMINATION_DELIMITER;
+         << Iml::pitch(data.angularVelocity) << ',' << Iml::yaw(data.angularVelocity) << '\n';
 
   return formattedData;
 }
@@ -62,7 +60,7 @@ const QByteArray getFormattedDataByteArray(const Iml::ImuData& data, ImuDataForm
     case ImuDataFormat::CSV:
       return getFormattedDataInCsvFormat(data).toUtf8();
     case ImuDataFormat::JSON:
-      return getFormattedDataInJsonFormat(data, true) + TERMINATION_DELIMITER;
+      return getFormattedDataInJsonFormat(data, true);
     case ImuDataFormat::STIM_IMU:
       return encodeImuDatagram(data);
   }
