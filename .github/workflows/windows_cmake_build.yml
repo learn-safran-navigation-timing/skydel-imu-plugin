@@ -62,7 +62,7 @@ jobs:
           cd /d C:\
           git clone --branch v%QT_VERSION%-lts-lgpl --single-branch https://github.com/qt/qt5
           cd qt5
-          perl init-repository --module-subset="qtbase"
+          perl init-repository --module-subset="qtbase,qtserialport"
           configure -prefix %QT_PREFIX% -opensource -confirm-license -nomake tests -nomake examples
 
       - name: Build and Install Qt (if not cached)

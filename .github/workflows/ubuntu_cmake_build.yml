@@ -57,11 +57,17 @@ jobs:
           make -j$(nproc)
           sudo make install
 
+          wget -qO- "https://download.qt.io/official_releases/qt/${QT5_VERSION%.*}/${QT5_VERSION}/submodules/qtserialport-everywhere-opensource-src-${QT5_VERSION}.tar.xz" | tar -xJvC "$QT5_TMP"
+          cd "$QT5_TMP"/qtserialport-everywhere-src*
+          "$QT_PREFIX"/bin/qmake
+          make --jobs="$(nproc)"
+          sudo make install
+
       - name: Install blaze 
         run: |
           git clone https://github.com/parsa/blaze 
           cd blaze && mkdir build && cd build 
-          cmake -DBLAZE_BLAS_MODE=ON .. && sudo make install -j${{ steps.cpu-cores.outputs.count }}
+          cmake -DBLAZE_BLAS_MODE=ON .. && sudo make install -j$(nproc)
 
       - name: Build with CMake
         uses: ashutoshvarma/action-cmake-build@master
