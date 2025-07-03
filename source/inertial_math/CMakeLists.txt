@@ -6,8 +6,6 @@ target_include_directories(inertial_math PUBLIC include)
 
 target_link_libraries(inertial_math PUBLIC blaze)
 
-set_property(TARGET inertial_math PROPERTY CXX_STANDARD 17)
-
 if(UNIX)
     target_compile_options(inertial_math PUBLIC -fPIC)
 endif()
