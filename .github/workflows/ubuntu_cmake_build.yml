@@ -57,7 +57,7 @@ jobs:
           make -j$(nproc)
           sudo make install
 
-          wget -qO- "https://download.qt.io/official_releases/qt/${QT5_VERSION%.*}/${QT5_VERSION}/submodules/qtserialport-everywhere-opensource-src-${QT5_VERSION}.tar.xz" | tar -xJvC "$QT_TMP"
+          wget -qO- "https://download.qt.io/official_releases/qt/${QT_VERSION%.*}/${QT_VERSION}/submodules/qtserialport-everywhere-opensource-src-${QT_VERSION}.tar.xz" | tar -xJvC "$QT_TMP"
           cd "$QT_TMP"/qtserialport-everywhere-src*
           "$QT_PREFIX"/bin/qmake
           make --jobs="$(nproc)"
