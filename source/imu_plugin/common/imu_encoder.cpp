@@ -15,7 +15,7 @@ void encodeValue(TypeValue value,
                  uint64_t startingByte,
                  QByteArray& datagram) requires std::is_arithmetic_v<TypeValue>&& std::is_arithmetic_v<TypeLsb>
 {
-  int64_t valueRounded = round(value / lsb);
+  int64_t valueRounded = std::round(value / lsb);
   for (uint64_t byte = 0; byte < numberBytes; byte++)
   {
     if (static_cast<int>(byte + startingByte) >= datagram.size())

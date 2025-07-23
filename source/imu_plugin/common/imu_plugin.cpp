@@ -46,7 +46,7 @@ void ImuPlugin::setDefaultConfiguration()
 
 SkydelRuntimePositionObserver* ImuPlugin::createRuntimePositionObserver()
 {
-  auto runtimeObjects = new ImuRuntimeObjects(m_logPath, m_configuration, [this](auto data) {
+  auto runtimeObjects = new ImuRuntimeObjects(m_logPath, m_configuration, [this](auto& data) {
     this->onImuDataUpdate(data);
   });
 
