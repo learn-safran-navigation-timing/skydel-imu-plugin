@@ -48,19 +48,20 @@ jobs:
           mkdir -p $QT_TMP
 
           # Build qtbase
-          wget -qO- "https://download.qt.io/official_releases/qt/${QT_VERSION%.*}/${QT_VERSION}/submodules/qtbase-everywhere-opensource-src-${QT_VERSION}.tar.xz" | tar -xJvC "$QT_TMP"
-          cd "$QT_TMP"/qtbase-everywhere-src*
-
+          git clone --branch v${{ env.QT_VERSION }}-lts-lgpl --single-branch https://github.com/qt/qtbase
+          cd qtbase
           sed -i "0,/#ifdef __cplusplus/!b;//a#  include <limits>" src/corelib/global/qglobal.h
 
-          ./configure -prefix "$QT_PREFIX" -xcb -opensource -confirm-license -nomake tests -nomake examples
+          ./configure -prefix ${{ env.QT_PREFIX }} -xcb -opensource -confirm-license -nomake tests -nomake examples
           make -j$(nproc)
           sudo make install
 
-          wget -qO- "https://download.qt.io/official_releases/qt/${QT_VERSION%.*}/${QT_VERSION}/submodules/qtserialport-everywhere-opensource-src-${QT_VERSION}.tar.xz" | tar -xJvC "$QT_TMP"
-          cd "$QT_TMP"/qtserialport-everywhere-src*
-          "$QT_PREFIX"/bin/qmake
-          make --jobs="$(nproc)"
+          # Build qtserialport
+          git clone --branch v${{ env.QT_VERSION }}-lts-lgpl --single-branch https://github.com/qt/qtserialport
+          cd qtserialport
+          ${{ env.QT_PREFIX }}/bin/qmake
+
+          make -j$(nproc)
           sudo make install
 
       - name: Install blaze 
