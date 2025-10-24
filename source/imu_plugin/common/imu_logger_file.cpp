@@ -2,7 +2,7 @@
 
 #include <QTextStream>
 
-#include "logger_utils.h"
+#include "imu_logger_utils.h"
 
 namespace
 {
@@ -43,19 +43,18 @@ ImuFileLogger::ImuFileLogger(ImuDataFormat dataFormat, const QString& logFilePat
   if (!m_file.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
     throw std::runtime_error("ImuFileLogger - Can't open file.");
 
-  writeInFile(getHeader(m_dataFormat));
+  writeInFile(getHeader(m_dataFormat).toUtf8());
 }
 
-void ImuFileLogger::writeInFile(const QString& string)
+void ImuFileLogger::writeInFile(const QByteArray& bytes)
 {
-  QTextStream stream(&m_file);
-  stream << string;
-
-  if (stream.status() == QTextStream::WriteFailed)
+  if (m_file.write(bytes) != bytes.size())
+  {
     throw std::runtime_error("ImuFileLogger - Failed to write in file.");
+  }
 }
 
 void ImuFileLogger::log(const Iml::ImuData& data)
 {
-  writeInFile(getFormattedData(data, m_dataFormat));
+  writeInFile(getFormattedData(data, m_dataFormat, true));
 }

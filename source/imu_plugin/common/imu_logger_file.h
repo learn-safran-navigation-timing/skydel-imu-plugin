@@ -15,7 +15,7 @@ public:
   void log(const Iml::ImuData& data) override;
 
 private:
-  void writeInFile(const QString& string);
+  void writeInFile(const QByteArray& bytes);
 
   const ImuDataFormat m_dataFormat;
   QFile m_file;

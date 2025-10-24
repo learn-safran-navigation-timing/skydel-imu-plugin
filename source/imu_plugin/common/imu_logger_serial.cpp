@@ -1,7 +1,7 @@
 #include "imu_logger_serial.h"
 
+#include "imu_logger_utils.h"
 #include "imu_serial_port_settings.h"
-#include "logger_utils.h"
 
 ImuSerialLogger::ImuSerialLogger(ImuDataFormat dataFormat, const SerialPortSettings& serialPortSettings) :
   ImuLogger(),
@@ -18,8 +18,7 @@ ImuSerialLogger::ImuSerialLogger(ImuDataFormat dataFormat, const SerialPortSetti
 
 void ImuSerialLogger::log(const Iml::ImuData& data)
 {
-  const auto imuDatagram = getFormattedDataByteArray(data, m_dataFormat);
-  if (m_serialPort.write(imuDatagram) == -1)
+  if (m_serialPort.write(getFormattedData(data, m_dataFormat, false)) == -1)
   {
     throw std::runtime_error("Error while logging data on " + m_serialPort.portName().toStdString() + " port.");
   }
