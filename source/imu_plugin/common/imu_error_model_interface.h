@@ -16,6 +16,5 @@ public:
   virtual void onSimulationStop() = 0;
   virtual void onConfigurationUpdate() = 0;
 
-  virtual void setEnabled(bool enabled) = 0;
   virtual void applyErrors(Iml::ImuData& imuData) = 0;
 };
