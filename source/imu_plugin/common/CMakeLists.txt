@@ -16,5 +16,11 @@ add_library(${TARGET_NAME} STATIC ${SOURCE_FILES})
 target_include_directories(${TARGET_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(
-  ${TARGET_NAME} PUBLIC inertial_math SkydelPlugin Qt5::Core Qt5::Widgets
-                        Qt5::Network Qt5::SerialPort)
+  ${TARGET_NAME} 
+  PUBLIC inertial_math 
+         SkydelPlugin
+         qt_legacy_support 
+         Qt5::Core 
+         Qt5::Widgets
+         Qt5::Network
+         Qt5::SerialPort)

@@ -3,6 +3,8 @@
 #include <QDialog>
 #include <QSerialPortInfo>
 
+#include <vector>
+
 namespace Ui
 {
 class DialogSerialLoggingPropertiesView;
@@ -18,6 +20,7 @@ class DialogSerialLoggingPropertiesView : public QDialog
 public:
   explicit DialogSerialLoggingPropertiesView(const QString& serialPortName,
                                              const SerialPortSettings& settings,
+                                             const std::vector<int>& validBaudRates,
                                              QWidget* parent = nullptr);
   ~DialogSerialLoggingPropertiesView();
 
@@ -34,7 +37,7 @@ private slots:
   void on_listWidget_itemDoubleClicked(QListWidgetItem* item);
 
 private:
-  void initWidgets();
+  void initWidgets(const std::vector<int>& validBaudRates);
   void selectSerialPort(const QString& serialPortName);
 
   std::unique_ptr<Ui::DialogSerialLoggingPropertiesView> ui;

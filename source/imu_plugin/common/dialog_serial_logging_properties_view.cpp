@@ -4,25 +4,58 @@
 #include <QPushButton>
 
 #include "imu_serial_port_settings.h"
-#include "imu_serial_port_utils.h"
+#include "qt_legacy_support/qt_serial_port_is_busy_impl.h"
 #include "ui_dialog_serial_logging_properties_view.h"
 
 namespace
 {
 constexpr auto NOT_AVAILABLE_MESSAGE = "Info Not Available";
+
+QString getPortErrorMsg(const QSerialPort& serialPort)
+{
+  switch (serialPort.error())
+  {
+    case QSerialPort::DeviceNotFoundError:
+      return "Device not found.\n\n"
+             "Check that the device is connected and the correct port is selected.";
+
+    case QSerialPort::PermissionError:
+      return "Permission denied while opening the serial port.\n\n"
+             "The port may already be in use by another application or Skydel does not have sufficient privileges.";
+
+    case QSerialPort::OpenError:
+      return "Failed to open the serial port.\n\n"
+             "The port may already be in use by another application or Skydel does not have sufficient privileges.";
+
+    case QSerialPort::UnsupportedOperationError:
+      return "The selected serial port configuration is invalid or is not supported by the system.";
+
+    case QSerialPort::UnknownError:
+      return "An unknown serial port error occurred.";
+
+    default:
+      return "Failed to open the serial port.\n\n" + serialPort.errorString();
+  }
 }
+
+} // namespace
 
 DialogSerialLoggingPropertiesView::DialogSerialLoggingPropertiesView(const QString& serialPortName,
                                                                      const SerialPortSettings& settings,
+                                                                     const std::vector<int>& validBaudRates,
                                                                      QWidget* parent) :
   QDialog(parent),
   ui(std::make_unique<Ui::DialogSerialLoggingPropertiesView>())
 {
   ui->setupUi(this);
 
-  initWidgets();
+  initWidgets(validBaudRates);
 
-  ui->baudRate->setCurrentText(QString::number(settings.baudRate));
+  if (std::ranges::any_of(validBaudRates, [&settings](auto rate) { return rate == settings.baudRate; }))
+  {
+    ui->baudRate->setCurrentText(QString::number(settings.baudRate));
+  }
+
   ui->dataBits->setValue(settings.dataBits);
   if (settings.stopBits > 0 && settings.stopBits <= ui->stopBitsGroup->buttons().size())
   {
@@ -48,10 +81,10 @@ DialogSerialLoggingPropertiesView::DialogSerialLoggingPropertiesView(const QStri
 
 DialogSerialLoggingPropertiesView::~DialogSerialLoggingPropertiesView() = default;
 
-void DialogSerialLoggingPropertiesView::initWidgets()
+void DialogSerialLoggingPropertiesView::initWidgets(const std::vector<int>& validBaudRates)
 {
   ui->baudRate->clear();
-  for (auto bd : SerialPortUtils::ValidBaudRates)
+  for (auto bd : validBaudRates)
   {
     ui->baudRate->addItem(QString::number(bd));
   }
@@ -93,7 +126,7 @@ SerialPortSettings DialogSerialLoggingPropertiesView::getSerialPortSettings()
           .stopBits = ui->stopBitsGroup->buttons().indexOf(ui->stopBitsGroup->checkedButton()) +
                       1, // Left radio button = 1, right = 2
           .flowControl = SerialPortUtils::parseFlowControlString(ui->flowControl->currentText()),
-          .portName = selection().portName()};
+          .portName = selection().systemLocation()};
 }
 
 void DialogSerialLoggingPropertiesView::refreshList()
@@ -135,7 +168,7 @@ void DialogSerialLoggingPropertiesView::validatePortSettings()
 
   if (!serialPort.open(QSerialPort::WriteOnly))
   {
-    QMessageBox::critical(this, "IMU Serial Port Connection Error", serialPort.errorString());
+    QMessageBox::critical(this, "IMU Serial Port Connection Error", getPortErrorMsg(serialPort));
     ui->listWidget->setCurrentRow(-1);
     m_arePortSettingsValid = false;
   }
@@ -160,13 +193,15 @@ void DialogSerialLoggingPropertiesView::on_listWidget_itemSelectionChanged()
     ui->label_vendor_id->setText(QString::number(info.vendorIdentifier()));
   else
     ui->label_vendor_id->setText(NOT_AVAILABLE_MESSAGE);
-  ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!info.isBusy());
+  ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!QtLegacySupport::isBusy(info));
 }
 
 void DialogSerialLoggingPropertiesView::on_listWidget_itemDoubleClicked(QListWidgetItem*)
 {
-  if (!m_ports.at(ui->listWidget->currentRow()).isBusy())
+  if (!QtLegacySupport::isBusy(m_ports.at(ui->listWidget->currentRow())))
+  {
     accept();
+  }
 }
 
 void DialogSerialLoggingPropertiesView::selectSerialPort(const QString& serialPortName)
