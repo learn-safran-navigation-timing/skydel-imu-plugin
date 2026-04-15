@@ -3,7 +3,7 @@
 #include <QFileInfo>
 #include <QSerialPortInfo>
 
-#ifdef WIN64
+#ifdef _WIN64
 #include <windows.h> // Needs to be included before the others
 // ----
 #include <errhandlingapi.h>
@@ -26,7 +26,7 @@ bool isBusy(const QSerialPortInfo& info)
   // implementation was added to the codebase. See :
   // https://github.com/qt/qtserialport/blob/v5.15.18-lts-lgpl/src/serialport/qserialportinfo_win.cpp
 
-#ifdef WIN64
+#ifdef _WIN64
   const HANDLE handle = ::CreateFile(reinterpret_cast<const wchar_t*>(info.systemLocation().utf16()),
                                      GENERIC_READ | GENERIC_WRITE,
                                      0,

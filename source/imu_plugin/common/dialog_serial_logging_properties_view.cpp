@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include <QPushButton>
 
-#include "../../qt_legacy_support/qt_serial_port_is_busy_impl.h"
+#include "qt_serial_port_is_busy_impl.h"
 #include "imu_serial_port_settings.h"
 #include "ui_dialog_serial_logging_properties_view.h"
 
