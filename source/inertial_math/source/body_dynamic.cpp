@@ -52,6 +52,10 @@ void BodyDynamic::pushPosition(int64_t time, const Triplet& position, const Trip
     auto dt_2_0 = (m_datas[2].time - m_datas[0].time) / 1000.0;
     auto dt_3_1 = (m_datas[3].time - m_datas[1].time) / 1000.0;
 
+    if (!isJerkReady())
+    {
+      m_datas[0].velocity = (m_datas[1].position - m_datas[0].position) / dt_1_0;
+    }
     m_datas[1].velocity = (m_datas[2].position - m_datas[0].position) / dt_2_0;
     m_datas[2].velocity = (m_datas[3].position - m_datas[1].position) / dt_3_1;
 
